@@ -19,6 +19,7 @@ func validateFreeTime(startTime string, endTime string, meetings []entity.Meetin
 	return nil
 }
 
+//check the formal of the meeting info
 func validateNewMeeting(meeting *entity.Meeting) error {
 
 	if len(meeting.StartTime) == 0 {
@@ -124,7 +125,7 @@ func AddMeetingToCurrSession(title string, participatorName []string, startTime 
 }
 
 func QuitFromMeeting(title string) error {
-
+	logln("quit meeting")
 	// check if someone has logged in
 	if !entity.CurrSession.HasLoggedIn() {
 		return fmt.Errorf("You have not logged in")
@@ -147,7 +148,7 @@ func QuitFromMeeting(title string) error {
 // Delete the meeting whose name is title
 // The logged user should be the sponsor
 func DeleteMeetingByTitle(title string) error {
-
+	logln("delete meeting by title")
 	// check if someone has logged in
 	if !entity.CurrSession.HasLoggedIn() {
 		return fmt.Errorf("You have not logged in")
@@ -165,7 +166,7 @@ func DeleteMeetingByTitle(title string) error {
 }
 
 func DeleteParticipatorFromMeeting(title string, participatorNames []string) error {
-
+	logln("delete participator from meeting")
 	if !entity.CurrSession.HasLoggedIn() {
 		return fmt.Errorf("No one has logged in")
 	}
@@ -198,7 +199,7 @@ func DeleteParticipatorFromMeeting(title string, participatorNames []string) err
 }
 
 func AddParticipatorToMeeting(title string, participatorNames []string) error {
-
+	logln("add participator to meeting")
 	if !entity.CurrSession.HasLoggedIn() {
 		return fmt.Errorf("No one has logged in")
 	}
@@ -237,11 +238,12 @@ func AddParticipatorToMeeting(title string, participatorNames []string) error {
 }
 
 func QueryMeeting(startTime, endTime string) ([]entity.Meeting, error) {
+	logln("query meeting")
 	return nil, nil
 }
 
 func ClearAllMeeting() error {
-
+	logln("clear all meeting")
 	if !entity.CurrSession.HasLoggedIn() {
 		return fmt.Errorf("No one has logged in")
 	}
